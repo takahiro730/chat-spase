@@ -46,4 +46,4 @@ _ has_many :comments
 
 ### Association
 - belong_to :user
-- has_many :group
+- has_many :groups
