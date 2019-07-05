@@ -22,7 +22,7 @@
 
 ### Association
 - has_many :users, through: :members
-_ has_many :comments
+- has_many :comments
 
 ## membersテーブル
 
