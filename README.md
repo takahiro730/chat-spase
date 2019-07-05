@@ -8,8 +8,8 @@
 |user_id|integer|null: false|
 
 ### Association
-- hasmany_to :comments
-- hasmany_to :group
+- has_many :comments
+- has_many :groups, through: :members
 
 ## groupsテーブル
 
@@ -21,8 +21,8 @@
 |group_id|integer|null: false|
 
 ### Association
-- hasmany_users
-_ hasmany_comments
+- has_many :users, through: :members
+_ has_many :comments
 
 ## membersテーブル
 
@@ -43,3 +43,7 @@ _ hasmany_comments
 |group_id|integer|null: false|
 |time|datetime|null: false|
 |comment|text|null: false|
+
+### Association
+- belong_to :user
+- has_many :group
