@@ -1,49 +1,49 @@
 ## usersテーブル
 
-|Column  |Type   |Options    |
-|--------|-------|-----------|
-|name    |string |null: false|
-|address |string |null: false|
-|password|string |null: false|
-|user_id |integer|null: false|
+|Column  |Type   |Options                |
+|--------|-------|-----------------------|
+|name    |string |null: false,index: true|
+|address |string |null: false            |
+|password|string |null: false            |
+|user_id |integer|null: false            |
 
 ### Association
 - has_many :comments
 - has_many :groups, through: :members
+- has_many :members
 
 ## groupsテーブル
 
-|Column      |Type   |Options    |
-|------------|-------|-----------|
-|group_name  |string |null: false|
-|group_memver|string |null: false|
-|add_memver  |string |null: false|
-|group_id    |integer|null: false|
+|Column|Type   |Options    |
+|------|-------|-----------|
+|name  |string |null: false|
 
 ### Association
 - has_many :users, through: :members
 - has_many :comments
+- has_many :members
 
 ## membersテーブル
 
 |Column  |Type   |Options                       |
 |--------|-------|------------------------------|
-|user_id |integer|null: false, foreign_key: true|
-|group_id|integer|null: false, foreign_key: true|
+|user    |references|null: false, foreign_key: true|
+|group   |references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :group
 - belongs_to :user
 
+
 ## commnetsテーブル
 
-|Column  |Type    |Options    |
-|--------|--------|-----------|
-|user_id |integer |null: false|
-|group_id|integer |null: false|
-|time    |datetime|null: false|
-|comment |text    |null: false|
+|Column  |Type       |Options                      |
+|--------|-----------|-----------------------------|
+|user_id |references |null: false,foreign_key: true|
+|group_id|references |null: false,foreign_key: true|
+|comment |text       |
+|image   |string     |
 
 ### Association
 - belong_to :user
-- has_many :groups
+- belong_to :group
