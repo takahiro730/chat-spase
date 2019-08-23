@@ -1,0 +1,75 @@
+// chat画面side大枠
+.chat-side{
+  background-color: #2f3e51;
+  color           : $white   ;
+  width           :300px     ;
+  height          :100vh     ;
+  display         :block     ;
+  float           :left      ;
+  overflow        :auto      ;
+// chat画面side user設定 新規グループ作成ゾーン
+  .chat-side-header{
+    background-color: #253141;
+    height          :100px     ;
+    width           :300px     ;
+    padding         :20px      ;
+    box-sizing      :border-box;
+    border-top      :1         ;
+
+
+  .chat-side-header__box{
+    display    :block ;
+    list-style : none ;
+    overflow   :hidden;
+    line-height:50px  ;
+
+    &__name {
+      position   :center  ;
+      font-weight:bold    ;
+      font-size  :16px    ;
+      margin     :auto,0  ;
+      float      :left    ;
+  }
+  }
+    .chat-side-header__box__menu{
+      display        :flex     ;
+      justify-content: flex-end;
+    }
+
+      &__list {
+        height      :50%         ;
+        font-size   :16px        ;
+        font-weight :bold        ;
+        border      : $white     ;
+        margin-right:1           ;
+  }
+  }
+// chat画面side グループ一覧ゾーン
+.groups{
+  background-color: #2f3e51;
+  height          : 600px    ;
+  width           : 300px    ;
+  color           :$white   ;
+  font-weight     : bold     ;
+  box-sizing      :border-box;
+  padding         :20px      ;
+
+
+  .groups__box{
+    display      :block;
+    height       :100px;
+    margin-bottom:40px ;
+    line-height  :200% ;
+    font-size    :11px ;
+     
+    &__name{
+      font-size    :15px       ;
+      color        :$white   ;
+
+    &__comment {
+      margin:5,0,40;
+  }
+  }
+  }
+}
+}
