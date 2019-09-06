@@ -16,9 +16,8 @@
     box-sizing   :border-box   ;
     overflow     :hidden       ;
     text-align   :right        ;
-    
 
-    .main-header__left-box{
+    &__left-box{
       display   :inline-block;
       margin-top:35px        ;
       float     :left        ;
@@ -35,7 +34,7 @@
         font-size:12px     ;
     }
   }
-    .main-header__edit-bottun {
+    &__edit-bottun {
       display        : inline-block  ;
       padding        : 0.3em 20px    ;
       text-decoration: none          ;
@@ -69,7 +68,7 @@
         margin-right:0           ;
       }
     }
-    .chat-box__user-comment{
+    &__user-comment{
       font-size  :20px;
       line-height:3   ;
   }
@@ -85,7 +84,7 @@
     padding-top     :20px        ;
 
 
-    .comment-box__inputbox{
+    &__inputbox{
       display :inline-block;
       width   :100%        ;
       position:relative    ;
@@ -93,11 +92,11 @@
       &__text-box{
         color :#434a54;
         height:50px     ;
-        width :70%      ;
+        width :85%      ;
       }
       &__image-bottun{
         position:absolute;
-        right   :340px   ;
+        right   :180px   ;
         top     :15px    ;
         z-index: 1;
         
@@ -109,7 +108,7 @@
         display:none;
         }
   }
-      .comment-box__send-bottun{
+      #send-bottun{
         display         : inline-block;
         background-color:#38aef0    ;
         padding         : 13px 20px   ;
