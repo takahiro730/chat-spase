@@ -1,0 +1,121 @@
+// chat画面
+.chat-main{
+  height    :101vh              ;
+  width     :calc(100vw - 300px);
+  float     :right              ;
+  box-sizing:border-box         ;
+  overflow  : hidden            ;
+}
+// グループ名 member表示ゾーン
+  .main-header{
+    height       :100px        ;
+    border       :#eeeeee 1px;
+    display      :block        ;
+    padding-right:40px         ;
+    padding-left :40px         ;
+    box-sizing   :border-box   ;
+    overflow     :hidden       ;
+    text-align   :right        ;
+
+    &__left-box{
+      display   :inline-block;
+      margin-top:35px        ;
+      float     :left        ;
+
+      &__group-name{
+        display    :inline-block;
+        font-size  :20px        ;
+        color      :#333333   ;
+        width      :auto        ;
+        line-height:40px        ;
+      }
+      &__member{ 
+        color    :$grey    ;
+        font-size:12px     ;
+    }
+  }
+    &__edit-bottun {
+      display        : inline-block  ;
+      padding        : 0.3em 20px    ;
+      text-decoration: none          ;
+      color          : $sky          ;
+      border         : solid 1px $sky;
+      margin-top     : 30px          ;
+      position       : absolute      ;
+      right          :40px           ;
+      top            :25px           ;
+  }
+  }
+  // chat表示ゾーン
+  .chat-box{
+    background-color:#fafafa ;
+    height          :544px     ;
+    padding         :40px      ;
+    box-sizing      :border-box;
+
+    &__boxa{
+      display: block;
+    
+      &__user-name{
+        display  :inline-block;
+        font-size:20px        ;
+        width    :auto        ;
+      }
+      &__time{
+        display     :inline-block;
+        font-size   :12px        ;
+        color       :$grey       ;
+        margin-right:0           ;
+      }
+    }
+    &__user-comment{
+      font-size  :20px;
+      line-height:3   ;
+  }
+}
+// コメントフォームゾーン
+  .comment-box{
+    display         :inline-block;
+    background-color:#c0c0c0   ;
+    height          :100px       ;
+    width           :100%        ;
+    box-sizing      :border-box  ;
+    padding-left    :40px        ;
+    padding-top     :20px        ;
+
+
+    &__inputbox{
+      display :inline-block;
+      width   :100%        ;
+      position:relative    ;
+  
+      &__text-box{
+        color :#434a54;
+        height:50px     ;
+        width :85%      ;
+      }
+      &__image-bottun{
+        position:absolute;
+        right   :180px   ;
+        top     :15px    ;
+        z-index: 1;
+        
+      .size{
+        font-size:1.5em;
+      }
+
+      #b1{
+        display:none;
+        }
+  }
+      #send-bottun{
+        display         : inline-block;
+        background-color:#38aef0    ;
+        padding         : 13px 20px   ;
+        margin-left     : 15px        ;
+        text-decoration : none        ;
+        color           : $white      ;
+        box-align       : border-box  ; 
+      }
+    }
+}
