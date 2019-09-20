@@ -8,30 +8,25 @@
   .chat-main
     .main-header
       .main-header__left-box
-        .main-header__left-box__group-name test-group
-        .main-header__left-box__member member: test-user
+        .main-header__left-box__group-name
+          = @group.name
+        .main-header__left-box__member
+          member: test-user
 
         =link_to 'Edit','#',class:'main-header__edit-bottun' 
 
 
-    .chat-box
-      .chat-box__boxa
-        .chat-box__boxa__user-name test-user
-        .chat-box__boxa__time 2019/00/00 00:00:00
-      .chat-box__user-comment こんにちは！
+    .messages
+      = render @messages
 
-      .chat-box__boxa
-        .chat-box__boxa__user-name タケ
-        .chat-box__boxa__time 2020/00/00 20:20:20
-      .chat-box__user-comment テスト
-
-    .comment-box
-      %form.comment-box__inputbox 
-        <input type="text" class="comment-box__inputbox__text-box"name="○○" value="type a message">
-        %label.comment-box__inputbox__image-bottun{for: "b1" } <input type="file" id="b1" class="icon" ><i class="far fa-image size"></i></input>
-
-        =link_to 'Send','#',id:'send-bottun'
-
+    .form
+      = form_for [@group, @message] do |f|
+        = f.text_field :content, class: 'form__message', placeholder: 'type a message'
+        .form__mask
+          = f.label :image, class: 'form__mask__image' do
+            = fa_icon 'picture-o', class: 'icon'
+            = f.file_field :image, class: 'hidden'
+        = f.submit 'Send', class: 'form__submit'
 
 
 
