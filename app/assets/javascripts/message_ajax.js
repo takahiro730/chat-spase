@@ -1,4 +1,4 @@
-$(function(){
+$(document).on('turbolinks:load', function(){
   function buildHTML(message){
     var html = `<p>
                   <strong>
@@ -20,18 +20,18 @@ $(function(){
       data: formData,
       dataType: 'json',
       processData: false,
-      contentType: false
+      contentType: false,
     })
     .done(function(data){
       var html = buildHTML(data);
       $('.messages').append(html)
       $('.textbox').val('')
+      $('#new_message').removeAttr('data-disable-with');
+      $('.log').animate({scrollTop: $('.log')[0].scrollHeight})
+      return false
     })
-    
-  });
+    .fail(function() {
+      alert('error');
+    });
   })
-})
-
-// .fail(function(){
-  // alert('error');
-  // })
+  });
