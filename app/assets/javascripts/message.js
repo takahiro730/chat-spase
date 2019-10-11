@@ -1,49 +1,54 @@
-$(function(){
+$(document).on('turbolinks:load',function(){
   function buildHTML(message){
     var html = `<div class="message">
                   <div class="upper-message">
                     <div class="upper-message__user-name">
-                      ${ message.user_name }
+                      ${ message.user_name}
                     </div>
                     <div class="upper-message__date">
-                      ${ message.time }
+                      ${ message.time}
                     </div>
                   </div>
                   <div class="lower-message">
                     <p class="lower-message__content">
-                      ${ message.content }
+                      ${ message.content}
                     </p>
                   </div>
                 </div>`;
   return html;
 }
-function scroll() {
-  $('.messages').animate({scrollTop: $('.message')[0].scrollHeight});
+function scrollBottom(){
+  var target = $('.message').last();
+  var position = target.offset().top + $('.messages').scrollTop();
+  $('.messages').animate({
+    scrollTop: position
+  }, 300, 'swing');
 }
-
-  $('#new_message').submit(function(e){
+  $('#new_message').on('submit',function(e){
     e.preventDefault();
     var formData = new FormData(this);
-    var url = $(this).attr('action')
+    var url = $(this).attr('action');
     $.ajax({
       url: url,
-      type: "POST",
-      dataType: 'json',
+      type: 'POST',
       data: formData,
+      dataType: 'text',
       processData: false,
       contentType: false
   })
   .done(function(data){
     var html = buildHTML(data);
-    $('.messages').append(html)
-    $('.form__message').val('')
+    $('.messages').append(html);
+    $('.form__message').val('');
     $('.form__submit').prop('disabled',false);
-    scroll() 
-    return false
+    scrollBottom();
+    return false;
     })
-  .fail(function() {
+  .fail(function(XMLHttpRequest, textStatus, errorThrown,responseTex){
     alert('error');
+    alert('ファイルの取得に失敗しました。');
     $('.form__submit').prop('disabled', false);
-  })
-})
+    console.log(textStatus,responseTex);
+  });
+});
 });
