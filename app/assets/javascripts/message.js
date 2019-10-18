@@ -1,6 +1,5 @@
 $(document).on('turbolinks:load',function(){
   function buildHTML(message){
-    console.log(message);
     var image = message.image ? `<img src=${message.image} class ="lower-message__image">`:" ";
     var html = `<div class="message">
                   <div class="upper-message">
@@ -34,7 +33,6 @@ function scrollBottom(){
     e.preventDefault();
     var formData = new FormData(this);
     var url = $(this).attr('action');
-    // console.log(formData);
     $.ajax({
       url: url,
       type: "POST",
@@ -46,17 +44,16 @@ function scrollBottom(){
   .done(function(message,data,XMLHttpRequest, textStatus, errorThrown,responseTex){
     var html = buildHTML(message);
     $('.messages').append(html);
-    $('#message_content').val('');
-    $('.form__submit').prop('disabled',false);
     $(".messages").animate({scrollTop:$('.messages')[0].scrollHeight});
-    // console.log(this);
     return false;
 })
-  .fail(function(XMLHttpRequest, textStatus, errorThrown,responseTex,message){
-    alert('error');
-    $('.form__submit').prop('disabled', false)
-    // console.log(textStatus,responseTex,errorThrown,XMLHttpRequest);
-    // console.log(message);
-});
+  .fail(function(message){
+    alert('エラーが発生しました');
+})
+  .always(function(){
+    $('#message_content').val('');
+    $('.hidden').val('');
+    $('.form__submit').prop('disabled',false);
+  });
 });
 });
