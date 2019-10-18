@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   root "users#index"
   resources :users, only: [:edit, :update]
     collection do
-      get 'search'
+      get 'index'
   resources :groups, only: [:new, :create, :edit, :update] do
     resources :messages, only: [:index, :create]
   end
