@@ -28,27 +28,29 @@ function scrollBottom(){
     e.preventDefault();
     var formData = new FormData(this);
     var url = $(this).attr('action');
+    console.log(formData);
     $.ajax({
       url: url,
-      type: 'POST',
+      type: "POST",
       data: formData,
-      dataType: 'text',
+      dataType: "json",
       processData: false,
       contentType: false
-  })
-  .done(function(data){
-    var html = buildHTML(data);
+})
+  .done(function(message,data,XMLHttpRequest, textStatus, errorThrown,responseTex){
+    var html = buildHTML(message);
     $('.messages').append(html);
-    $('.form__message').val('');
+    $('#message_content').val('');
     $('.form__submit').prop('disabled',false);
-    scrollBottom();
+    $(".messages").animate({scrollTop:$('.messages')[0].scrollHeight});
+    console.log(this);
     return false;
-    })
-  .fail(function(XMLHttpRequest, textStatus, errorThrown,responseTex){
+})
+  .fail(function(XMLHttpRequest, textStatus, errorThrown,responseTex,message){
     alert('error');
-    alert('ファイルの取得に失敗しました。');
-    $('.form__submit').prop('disabled', false);
-    console.log(textStatus,responseTex);
-  });
+    $('.form__submit').prop('disabled', false)
+    console.log(textStatus,responseTex,errorThrown,XMLHttpRequest);
+    console.log(message);
+});
 });
 });
