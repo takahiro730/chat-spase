@@ -41,14 +41,15 @@ function scrollBottom(){
       processData: false,
       contentType: false
 })
-  .done(function(message,data,XMLHttpRequest, textStatus, errorThrown,responseTex){
+  .done(function(message){
     var html = buildHTML(message);
     $('.messages').append(html);
     $(".messages").animate({scrollTop:$('.messages')[0].scrollHeight});
     return false;
 })
-  .fail(function(message){
+  .fail(function(){
     alert('エラーが発生しました');
+
 })
   .always(function(){
     $('#message_content').val('');
@@ -57,3 +58,4 @@ function scrollBottom(){
   });
 });
 });
+
