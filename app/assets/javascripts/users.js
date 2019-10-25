@@ -1,14 +1,11 @@
 $(document).on('turbolinks:load',function(){
-  $(users).on('keyup','#form',function(e){
+  $(document).on('keyup','#form',function(e){
     e.preventDefault();
-    var input = $.trim($(this).val());
-    var url = $(this).attr('action');
+    var input = $('form__message').val();
     $.ajax({
-      url: url,
+      url: '/users',
       type: 'GET',
-      data: ('keyword=' + input),
-      processData: false,
-      contentType: false,
+      data: ('keyword' + input),
       dataType: 'json'
     })
   })
