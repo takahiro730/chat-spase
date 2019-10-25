@@ -2,7 +2,7 @@ $(document).on('turbolinks:load',function(){
   $(document).on('keyup','.chat-group-form__field--right',function(e){
     e.preventDefault();
     var input = $('#user-search-field').val();
-    console.log(input);
+    var href = window.location.href
     $.ajax({
       url: '/users',
       type: 'GET',
@@ -10,15 +10,16 @@ $(document).on('turbolinks:load',function(){
       dataType: 'json'
     })
     .done(function(users){
-      $().empty();
-      if (users.lecgth !== 0){
+      $('.user-search-result').empty();
+      if (users.length !== 0){
         users.forEach(function(user){
-          appendUser(user);
+          var html = appendUser(user);
+          $(".user-search-result").append(html);
         });
       }
-      else {
-        appendErrMsgToHTML("エラーが出ました");
-      }
+    }) 
+    .fail(function(){
+      alert("エラーが出ました")
     })
   })
 });
