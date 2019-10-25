@@ -1,15 +1,24 @@
 $(document).on('turbolinks:load',function(){
-  $(document).on('keyup','.new_message',function(e){
+  $(document).on('keyup','.chat-group-form__field--right',function(e){
     e.preventDefault();
-    var input = $('#message_content').val();
+    var input = $('#user-search-field').val();
+    console.log(input);
     $.ajax({
       url: '/users',
       type: 'GET',
-      data: { keyword: input},
+      data: { keyword: input },
       dataType: 'json'
     })
-    .done(function(input){
-      console.log(input);
+    .done(function(users){
+      $().empty();
+      if (users.lecgth !== 0){
+        users.forEach(function(user){
+          appendUser(user);
+        });
+      }
+      else {
+        appendErrMsgToHTML("エラーが出ました");
+      }
     })
   })
 });
